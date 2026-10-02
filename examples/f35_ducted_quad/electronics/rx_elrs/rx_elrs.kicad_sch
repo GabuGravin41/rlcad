@@ -1,0 +1,15 @@
+(kicad_sch
+	(version 20230121)
+	(generator eeschema)
+	(uuid 65c93ac1-3af0-4152-b5aa-5783b69e15e7)
+	(paper "A4")
+	(title_block
+		(title "ExpressLRS 2.4 GHz nano receiver (bought) - interface model")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

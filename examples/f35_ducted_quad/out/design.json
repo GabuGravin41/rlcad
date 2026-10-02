@@ -1,0 +1,1006 @@
+{
+ "spec": {
+  "name": "f35_ducted_quad",
+  "kind": "ducted_quad_f35",
+  "requirements": {
+   "airframe": "F-35-style ducted quad, 3\" props",
+   "fc": "RL PCB F405 (30.5 mm)",
+   "battery": "3S 450\u2013650 mAh"
+  },
+  "printer": "bambu_a1_mini",
+  "parts": {
+   "motor": {
+    "id": "motor_xing2_1404_4600kv"
+   },
+   "prop": {
+    "id": "prop_gemfan_3016_3"
+   },
+   "esc": {
+    "id": "esc_racerstar_shot30a"
+   },
+   "fc": {
+    "id": "fc_rl_f405"
+   },
+   "receiver": {
+    "id": "rx_radiomaster_rp1"
+   },
+   "battery": {
+    "id": "lipo_3s_650"
+   }
+  },
+  "airframe": {},
+  "materials": {},
+  "fc_step": "boards/rl_fc_f405.step",
+  "boards": {
+   "fc": {
+    "project": "electronics/rl_fc_f405",
+    "rotation": 0
+   }
+  },
+  "decisions": [
+   "ACK arm_stiffness: first flights on a PETG frame (first mode ~125 Hz, deflection 0.3 mm); switch to PETG-CF (~176 Hz) or 3 mm carbon from frame.dxf (~194 Hz) if the gyro trace is noisy",
+   "ACK power_connector: full-throttle bursts (~32 A estimated) last a few seconds; hover draws ~5 A. XT30 is the usual connector on 3S 450-650 mAh packs; switch to a pack with an XT60 if the plug gets hot"
+  ],
+  "updated": 1790459031.0071464
+ },
+ "params": {
+  "prop_d": 76.49,
+  "tip_gap": 1.5,
+  "duct_wall": 1.6,
+  "duct_lip_r": 4.0,
+  "duct_z0": 10.5,
+  "duct_depth": 26.0,
+  "motor_h": 13.5,
+  "motor_base_d": 15.0,
+  "motor_bell_d": 19.9,
+  "motor_pattern": 9.0,
+  "motor_pattern_alt": 0.0,
+  "motor_hole_d": 2.2,
+  "prop_hub_h": 5.5,
+  "duct_dx": 50.0,
+  "fus_half_w": 23.0,
+  "duct_to_fus_gap": 2.8,
+  "frame_t": 2.5,
+  "plate_half_w": 20.0,
+  "plate_x": [
+   -65.0,
+   65.0
+  ],
+  "arm_w": 12.0,
+  "rib_w": 2.4,
+  "rib_h": 6.5,
+  "stack_pattern": 30.5,
+  "stack_x": 30.0,
+  "skin_t": 1.0,
+  "wing_t": 3.0,
+  "wing_tip_t": 1.6,
+  "fin_root_t": 2.4,
+  "fin_tip_t": 1.3,
+  "wing_z": 10.5,
+  "te_min": 0.9,
+  "wing_sweep_deg": 35.0,
+  "wing_le_root_ahead": 78.0,
+  "wing_te_root_x": 4.0,
+  "wing_tip_chord": 26.0,
+  "tail_sweep_deg": 40.0,
+  "tail_le_root_x": -6.0,
+  "tail_te_root_x": -104.0,
+  "tail_tip_chord": 24.0,
+  "tail_span_inset": 4.0,
+  "wing_margin": 3.0,
+  "span_margin": 4.8,
+  "nose_x": 175.0,
+  "tail_x": -108.0,
+  "fus_top_z": 44.0,
+  "chine_z": 20.0,
+  "fin_cant_deg": 25.0,
+  "fin_h": 42.0,
+  "fit_clear": 0.2,
+  "port_holes": [
+   [
+    0.0,
+    1,
+    25.0,
+    10.5,
+    4.6
+   ]
+  ],
+  "usb_port": [
+   0.0,
+   25.0
+  ],
+  "duct_ri": 39.745,
+  "duct_ro": 41.345,
+  "duct_dy": 67.14,
+  "span_y": 113.29,
+  "prop_z": 18.75
+ },
+ "checks": {
+  "summary": {
+   "error": 0,
+   "warning": 2,
+   "info": 11
+  },
+  "findings": [
+   {
+    "severity": "warning",
+    "rule": "arm_stiffness",
+    "message": "arm first bending mode \u2248142 Hz is low; gyro noise filtering will have to work hard. Options: print the frame in PETG-CF/PA-CF, or cut it from 3 mm carbon plate (frame.dxf; \u2248221 Hz)",
+    "refs": [
+     "frame"
+    ],
+    "acknowledged": true
+   },
+   {
+    "severity": "warning",
+    "rule": "power_connector",
+    "message": "full throttle \u224832 A is above the XT30's 30 A burst rating",
+    "refs": [
+     "battery"
+    ],
+    "acknowledged": true
+   },
+   {
+    "severity": "info",
+    "rule": "interference",
+    "message": "fuselage_tail and fin_left share 4.5 mm\u00b3 (glued joint)",
+    "refs": [
+     "fuselage_tail",
+     "fin_left"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "interference",
+    "message": "fuselage_tail and fin_right share 4.6 mm\u00b3 (glued joint)",
+    "refs": [
+     "fuselage_tail",
+     "fin_right"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "connector_access",
+    "message": "fc.usb_c (J2) (extension socket) reachable through the left side of the fuselage (12.5\u00d77.0 mm plug path clear)",
+    "refs": [
+     "fc.usb_c (J2) (extension socket)"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "board_mount",
+    "message": "fc: 4 holes on the 30.5 mm stack pattern (\u00d83.2 mm)",
+    "refs": [
+     "fc"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "board_height",
+    "message": "fc: parts 2.5 mm below / 3.31 mm above the board; space is 3.7 mm to the ESC and 15.38 mm to the roof",
+    "refs": [
+     "fc"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "prop_fit",
+    "message": "prop bore 1.5 mm = motor shaft 1.5 mm; hub (5.5 mm) sits on the bell at z 16.0 mm, prop plane z 18.75 mm",
+    "refs": [
+     "prop",
+     "motor"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "motor_leads",
+    "message": "motor leads 120 mm \u2265 \u2248104 mm to the ESC pads (trim to length)",
+    "refs": [
+     "motor",
+     "esc"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "battery_fit",
+    "message": "Tattu 3S1P 650 mAh 75C LiPo, XT30: fits at its nominal size and at the upper tolerance (63.0\u00d733.0\u00d718.0 mm)",
+    "refs": [
+     "battery"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "power_esc",
+    "message": "ESC 30 A per motor \u2265 estimated 8.1 A at full throttle and the motor's 11.8 A rating (peak 17.99 A)",
+    "refs": [
+     "esc",
+     "motor"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "power_battery",
+    "message": "full throttle \u224832 A \u2264 49 A (650 mAh \u00d7 75C)",
+    "refs": [
+     "battery"
+    ]
+   },
+   {
+    "severity": "info",
+    "rule": "print_audit",
+    "message": "all 10 printed parts: closed meshes, walls \u2265 2 lines except small areas, no overhang that needs support, flat on the bed",
+    "refs": []
+   }
+  ],
+  "metrics": {
+   "print_orientation": {
+    "frame": {
+     "footprint_mm": [
+      154.2,
+      130.0
+     ],
+     "height_mm": 10.5,
+     "fits": true,
+     "diagonal": false
+    },
+    "pod_front_left": {
+     "footprint_mm": [
+      127.5,
+      91.5
+     ],
+     "height_mm": 26.0,
+     "fits": true,
+     "diagonal": false
+    },
+    "pod_front_right": {
+     "footprint_mm": [
+      127.5,
+      91.5
+     ],
+     "height_mm": 26.0,
+     "fits": true,
+     "diagonal": false
+    },
+    "pod_rear_left": {
+     "footprint_mm": [
+      103.4,
+      90.6
+     ],
+     "height_mm": 26.0,
+     "fits": true,
+     "diagonal": false
+    },
+    "pod_rear_right": {
+     "footprint_mm": [
+      103.4,
+      90.6
+     ],
+     "height_mm": 26.0,
+     "fits": true,
+     "diagonal": false
+    },
+    "fuselage_nose": {
+     "footprint_mm": [
+      112.5,
+      48.4
+     ],
+     "height_mm": 45.1,
+     "fits": true,
+     "diagonal": false
+    },
+    "fuselage_centre": {
+     "footprint_mm": [
+      142.0,
+      46.5
+     ],
+     "height_mm": 41.5,
+     "fits": true,
+     "diagonal": false
+    },
+    "fuselage_tail": {
+     "footprint_mm": [
+      53.6,
+      46.5
+     ],
+     "height_mm": 45.1,
+     "fits": true,
+     "diagonal": false
+    },
+    "fin_left": {
+     "footprint_mm": [
+      55.3,
+      28.4
+     ],
+     "height_mm": 2.6,
+     "fits": true,
+     "diagonal": false
+    },
+    "fin_right": {
+     "footprint_mm": [
+      55.3,
+      28.4
+     ],
+     "height_mm": 2.6,
+     "fits": true,
+     "diagonal": false
+    }
+   },
+   "prop": {
+    "tip_gap_mm": 1.5,
+    "prop_plane_z": 18.75,
+    "duct_z": [
+     10.5,
+     36.5
+    ]
+   },
+   "boards": {
+    "fc": {
+     "envelope": {
+      "schema": "rl-envelope/1",
+      "product": "f35_ducted_quad",
+      "slot": "fc",
+      "generated_by": "RL CAD",
+      "frame": "board frame of rl-mech/1 (origin outline centre, +y = KiCad top edge)",
+      "rotation_deg": 0,
+      "max_outline_mm": [
+       46.8,
+       43.0
+      ],
+      "mount_pattern_mm": 30.5,
+      "mount_hole_d_mm": 3.0,
+      "keepout_height_mm": {
+       "top": 15.38,
+       "bottom": 3.7
+      },
+      "reachable_edges": [],
+      "required_ports": [
+       {
+        "mate": "usb-c",
+        "why": "flight-controller configuration from outside the airframe",
+        "via_extension": true,
+        "edges": []
+       }
+      ],
+      "notes": [
+       "stack at x = 30.0 mm; board bottom face at z = 15.0 mm in the airframe"
+      ]
+     },
+     "outline_mm": [
+      36.0,
+      36.0
+     ],
+     "height_mm": {
+      "top": 3.31,
+      "bottom": 2.5
+     },
+     "mech": "/home/claude/rlpcb/examples/drone_fc/output/rl_fc_f405/rl_fc_f405.kicad_pcb"
+    }
+   },
+   "mass": {
+    "items": [
+     {
+      "name": "battery",
+      "mass_g": 59.0,
+      "pct": 23.1
+     },
+     {
+      "name": "pod",
+      "mass_g": 57.1,
+      "pct": 22.4
+     },
+     {
+      "name": "motor",
+      "mass_g": 36.4,
+      "pct": 14.2
+     },
+     {
+      "name": "frame",
+      "mass_g": 29.3,
+      "pct": 11.5
+     },
+     {
+      "name": "fuselage",
+      "mass_g": 27.3,
+      "pct": 10.7
+     },
+     {
+      "name": "esc",
+      "mass_g": 10.0,
+      "pct": 3.9
+     },
+     {
+      "name": "wiring_allowance",
+      "mass_g": 10.0,
+      "pct": 3.9
+     },
+     {
+      "name": "fc",
+      "mass_g": 7.3,
+      "pct": 2.9
+     },
+     {
+      "name": "fasteners_m2_m",
+      "mass_g": 6.0,
+      "pct": 2.3
+     },
+     {
+      "name": "prop",
+      "mass_g": 4.8,
+      "pct": 1.9
+     },
+     {
+      "name": "usb_c_panel_ext",
+      "mass_g": 3.0,
+      "pct": 1.2
+     },
+     {
+      "name": "receiver",
+      "mass_g": 2.2,
+      "pct": 0.9
+     },
+     {
+      "name": "fin",
+      "mass_g": 1.9,
+      "pct": 0.8
+     },
+     {
+      "name": "canopy",
+      "mass_g": 1.2,
+      "pct": 0.5
+     }
+    ],
+    "total_g": 255.6
+   },
+   "cg": {
+    "cg_mm": [
+     0.0,
+     0.21,
+     13.78
+    ],
+    "total_g": 255.6
+   },
+   "propulsion": {
+    "inputs": {
+     "kv": 4600,
+     "prop_d_mm": 76.49,
+     "ct": 0.12,
+     "cp": 0.062,
+     "cells": 3,
+     "capacity_mah": 650,
+     "auw_g": 255.6,
+     "duct_factor": 1.0,
+     "k_load": 0.8,
+     "eta_drive": 0.7
+    },
+    "max_rpm_est": 40848,
+    "max_thrust_per_motor_g": 238,
+    "total_max_thrust_g": 951,
+    "thrust_to_weight": 3.72,
+    "hover_rpm": 21174,
+    "hover_throttle_est_pct": 52,
+    "hover_current_a": 4.5,
+    "max_current_per_motor_a": 8.1,
+    "hover_flight_time_min": 6.9,
+    "battery_c_needed": 49.7,
+    "method": "T = Ct\u00b7\u03c1\u00b7n\u00b2\u00b7D\u2074, P = Cp\u00b7\u03c1\u00b7n\u00b3\u00b7D\u2075; n_max = KV\u00b7V\u00b7k_load; P_elec = P_shaft/\u03b7; t_hover = 0.8\u00b7C / I_hover",
+    "assessment": "good: T/W \u2265 3 is agile, \u2265 2 flies calmly",
+    "caveats": [
+     "Ct/Cp are typical values; a thrust-stand table for your exact motor/prop replaces this estimate.",
+     "Ducts can add thrust with a tight tip gap and a rounded inlet lip; duct_factor 1.0 assumes no gain.",
+     "Voltage used: 11.1 V nominal (12.6 V full)."
+    ]
+   },
+   "arm": {
+    "material": "PETG",
+    "length_mm": 58.8,
+    "I_mm4": 278.4,
+    "tip_deflection_mm": 0.28,
+    "bending_stress_mpa": 3.1,
+    "safety_factor": 14.7,
+    "first_mode_hz": 142,
+    "method": "cantilever: \u03b4 = F\u00b7L\u00b3/(3\u00b7E\u00b7I), \u03c3 = F\u00b7L\u00b7c/I, f = \u221a(k/m)/2\u03c0",
+    "carbon_3mm_alternative": {
+     "tip_deflection_mm": 0.12,
+     "first_mode_hz": 221
+    }
+   },
+   "parts_fit": {
+    "motor_screw": {
+     "length_mm": 5,
+     "note": "M2\u00d75: 2.5 mm plate + \u22482.5 mm into the motor base"
+    }
+   },
+   "print_audit": {
+    "frame": {
+     "orientation": "as modelled",
+     "watertight": true,
+     "min_thickness_mm": 1.25,
+     "thin_area_mm2": 0.0,
+     "knife_area_mm2": 0.0,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 7852.5,
+     "height_mm": 10.5,
+     "bridges": []
+    },
+    "pod_front_left": {
+     "orientation": "as modelled",
+     "watertight": true,
+     "min_thickness_mm": 0.37,
+     "thin_area_mm2": 14.2,
+     "knife_area_mm2": 0.2,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 4073.1,
+     "height_mm": 26.0,
+     "bridges": [
+      {
+       "span_mm": 1.6,
+       "area_mm2": 2.0,
+       "at_mm": [
+        51.6,
+        57.1,
+        4.4
+       ]
+      }
+     ]
+    },
+    "pod_front_right": {
+     "orientation": "as modelled",
+     "watertight": true,
+     "min_thickness_mm": 0.37,
+     "thin_area_mm2": 14.2,
+     "knife_area_mm2": 0.2,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 4073.1,
+     "height_mm": 26.0,
+     "bridges": [
+      {
+       "span_mm": 1.6,
+       "area_mm2": 2.0,
+       "at_mm": [
+        51.6,
+        122.9,
+        4.4
+       ]
+      }
+     ]
+    },
+    "pod_rear_left": {
+     "orientation": "as modelled",
+     "watertight": true,
+     "min_thickness_mm": 0.6,
+     "thin_area_mm2": 2.0,
+     "knife_area_mm2": 0.0,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 3246.2,
+     "height_mm": 26.0,
+     "bridges": [
+      {
+       "span_mm": 1.6,
+       "area_mm2": 2.0,
+       "at_mm": [
+        116.6,
+        57.5,
+        4.4
+       ]
+      }
+     ]
+    },
+    "pod_rear_right": {
+     "orientation": "as modelled",
+     "watertight": true,
+     "min_thickness_mm": 0.6,
+     "thin_area_mm2": 2.0,
+     "knife_area_mm2": 0.0,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 3246.2,
+     "height_mm": 26.0,
+     "bridges": [
+      {
+       "span_mm": 1.6,
+       "area_mm2": 2.0,
+       "at_mm": [
+        116.6,
+        122.5,
+        4.4
+       ]
+      }
+     ]
+    },
+    "fuselage_nose": {
+     "orientation": "standing on its aft face (-x down)",
+     "watertight": true,
+     "min_thickness_mm": 0.31,
+     "thin_area_mm2": 13.3,
+     "knife_area_mm2": 0.4,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 156.3,
+     "height_mm": 112.5,
+     "bridges": [
+      {
+       "span_mm": 3.8,
+       "area_mm2": 17.2,
+       "at_mm": [
+        98.8,
+        90.0,
+        98.0
+       ]
+      }
+     ]
+    },
+    "fuselage_centre": {
+     "orientation": "standing on its aft face (-x down)",
+     "watertight": true,
+     "min_thickness_mm": 0.35,
+     "thin_area_mm2": 4.6,
+     "knife_area_mm2": 0.8,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 118.3,
+     "height_mm": 142.0,
+     "bridges": []
+    },
+    "fuselage_tail": {
+     "orientation": "standing on its forward face (+x down)",
+     "watertight": true,
+     "min_thickness_mm": 0.24,
+     "thin_area_mm2": 18.3,
+     "knife_area_mm2": 0.7,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 156.4,
+     "height_mm": 53.6,
+     "bridges": [
+      {
+       "span_mm": 16.4,
+       "area_mm2": 264.7,
+       "at_mm": [
+        90.2,
+        85.3,
+        42.0
+       ]
+      }
+     ]
+    },
+    "fin_left": {
+     "orientation": "lying on its flat side",
+     "watertight": true,
+     "min_thickness_mm": 0.06,
+     "thin_area_mm2": 13.7,
+     "knife_area_mm2": 0.2,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 1089.0,
+     "height_mm": 2.4,
+     "bridges": []
+    },
+    "fin_right": {
+     "orientation": "lying on its flat side",
+     "watertight": true,
+     "min_thickness_mm": 0.06,
+     "thin_area_mm2": 13.7,
+     "knife_area_mm2": 0.2,
+     "overhang_area_mm2": 0.0,
+     "bed_contact_mm2": 1089.0,
+     "height_mm": 2.4,
+     "bridges": []
+    }
+   }
+  },
+  "notes": [
+   "FC geometry from rl_fc_f405_board.step (36.0\u00d736.0\u00d71.6 mm)",
+   "USB-C brought out to the left side of the fuselage at x = 0.0 mm with a short extension: the FC's own port faces the front-left duct"
+  ]
+ },
+ "print": {
+  "frame": {
+   "orientation": "as modelled",
+   "footprint_mm": [
+    154.3,
+    130.0
+   ],
+   "height_mm": 10.5,
+   "fits": true,
+   "support_area_mm2": 0,
+   "bed_contact_mm2": 7843,
+   "path": "out/print/frame.stl",
+   "material": "PETG",
+   "mass_g": 29.3
+  },
+  "pod_front_left": {
+   "orientation": "as modelled",
+   "footprint_mm": [
+    127.5,
+    91.5
+   ],
+   "height_mm": 26.0,
+   "fits": true,
+   "support_area_mm2": 7,
+   "bed_contact_mm2": 4108,
+   "path": "out/print/pod_front_left.stl",
+   "material": "LW-PLA",
+   "mass_g": 14.9
+  },
+  "pod_front_right": {
+   "orientation": "as modelled",
+   "footprint_mm": [
+    127.5,
+    91.5
+   ],
+   "height_mm": 26.0,
+   "fits": true,
+   "support_area_mm2": 7,
+   "bed_contact_mm2": 4108,
+   "path": "out/print/pod_front_right.stl",
+   "material": "LW-PLA",
+   "mass_g": 14.9
+  },
+  "pod_rear_left": {
+   "orientation": "as modelled",
+   "footprint_mm": [
+    103.5,
+    90.7
+   ],
+   "height_mm": 26.0,
+   "fits": true,
+   "support_area_mm2": 3,
+   "bed_contact_mm2": 3281,
+   "path": "out/print/pod_rear_left.stl",
+   "material": "LW-PLA",
+   "mass_g": 13.7
+  },
+  "pod_rear_right": {
+   "orientation": "as modelled",
+   "footprint_mm": [
+    103.5,
+    90.7
+   ],
+   "height_mm": 26.0,
+   "fits": true,
+   "support_area_mm2": 3,
+   "bed_contact_mm2": 3281,
+   "path": "out/print/pod_rear_right.stl",
+   "material": "LW-PLA",
+   "mass_g": 13.7
+  },
+  "fuselage_nose": {
+   "orientation": "standing on its aft face (-x down)",
+   "footprint_mm": [
+    50.0,
+    48.5
+   ],
+   "height_mm": 112.5,
+   "fits": true,
+   "support_area_mm2": 91,
+   "bed_contact_mm2": 153,
+   "path": "out/print/fuselage_nose.stl",
+   "material": "LW-PLA",
+   "mass_g": 13.9
+  },
+  "fuselage_centre": {
+   "orientation": "standing on its aft face (-x down)",
+   "footprint_mm": [
+    46.7,
+    41.6
+   ],
+   "height_mm": 142.0,
+   "fits": true,
+   "support_area_mm2": 436,
+   "bed_contact_mm2": 118,
+   "path": "out/print/fuselage_centre.stl",
+   "material": "LW-PLA",
+   "mass_g": 10.3
+  },
+  "fuselage_tail": {
+   "orientation": "standing on its forward face (+x down)",
+   "footprint_mm": [
+    46.7,
+    45.1
+   ],
+   "height_mm": 53.6,
+   "fits": true,
+   "support_area_mm2": 279,
+   "bed_contact_mm2": 152,
+   "path": "out/print/fuselage_tail.stl",
+   "material": "LW-PLA",
+   "mass_g": 4.2
+  },
+  "fin_left": {
+   "orientation": "lying on its flat side",
+   "footprint_mm": [
+    50.0,
+    31.5
+   ],
+   "height_mm": 2.4,
+   "fits": true,
+   "support_area_mm2": 0,
+   "bed_contact_mm2": 1089,
+   "path": "out/print/fin_left.stl",
+   "material": "LW-PLA",
+   "mass_g": 1.0
+  },
+  "fin_right": {
+   "orientation": "lying on its flat side",
+   "footprint_mm": [
+    50.0,
+    31.5
+   ],
+   "height_mm": 2.4,
+   "fits": true,
+   "support_area_mm2": 0,
+   "bed_contact_mm2": 1089,
+   "path": "out/print/fin_right.stl",
+   "material": "LW-PLA",
+   "mass_g": 1.0
+  }
+ },
+ "bom": [
+  {
+   "type": "make (RL PCB)",
+   "role": "fc",
+   "item": "RL-FC F405 flight controller (designed with RL PCB)",
+   "qty": 1,
+   "mass_g_each": 7.0,
+   "source": "RL PCB example examples/drone_fc: 36\u00d736 mm 4-layer 1.6 mm, 30.5\u00d730.5 mm M3 mounting; mass estimated from board area (FR4 1.85 g/cm\u00b3) plus components.",
+   "notes": ""
+  },
+  {
+   "type": "buy",
+   "role": "esc",
+   "item": "Racerstar Shot30A 4-in-1 ESC, 30.5 mm, 3\u20136S, BLHeli_S",
+   "qty": 1,
+   "mass_g_each": 10.0,
+   "source": "Racerstar product page (Shot30A): 36\u00d736 mm board, 30.5\u00d730.5 mm M3 mounting, 10 g, 30 A continuous / 35 A peak, 3\u20136S, BLHeli_S, current and voltage sensor. Height 5.5 mm with components is an estimate.",
+   "notes": ""
+  },
+  {
+   "type": "buy",
+   "role": "motor",
+   "item": "iFlight XING2 1404 4600KV (unibell, 1.5 mm shaft)",
+   "qty": 4,
+   "mass_g_each": 9.1,
+   "source": "iFlight product page (shop.iflight.com, XING2 1404 Toothpick Ultralight, 4600KV): \u03c619.9 \u00d7 18.4 mm overall, 9.1 g with wire, 9\u00d79 mm \u03c62 mm mounting holes, 120 mm 26 AWG leads, 3\u20134S, peak 17.99 A / 287.8 W; iFlight EU page: body \u03c619.9 \u00d7 13.5 mm; GetFPV: 1.5 mm shaft, M2\u00d77 screws supplied. base_d is an estimate.",
+   "notes": ""
+  },
+  {
+   "type": "buy",
+   "role": "prop",
+   "item": "Gemfan Hurricane 3016 tri-blade, 1.5 mm shaft",
+   "qty": 8,
+   "mass_g_each": 1.2,
+   "source": "GetFPV listing (Gemfan Hurricane 3016 Durable 3-Blade, 1.5 mm shaft): 76.49 mm, pitch 1.6\", 3 blades, 1.5 mm bore, 1.18\u20131.20 g, 5.5 mm hub thickness, 8.84 mm max blade width, PC. Ct/Cp are estimates for a low-pitch 3\" tri-blade (no published thrust data); hub_d is an estimate.",
+   "notes": "4 + 4 spares, 2 CW + 2 CCW"
+  },
+  {
+   "type": "buy",
+   "role": "receiver",
+   "item": "RadioMaster RP1 V2 ExpressLRS 2.4 GHz nano receiver",
+   "qty": 1,
+   "mass_g_each": 2.2,
+   "source": "RadioMaster product page (RP1 V2): 13\u00d711\u00d73 mm, 2.2 g with antenna, UFL with 65 mm T antenna, CRSF, 5 V.",
+   "notes": ""
+  },
+  {
+   "type": "buy",
+   "role": "battery",
+   "item": "Tattu 3S1P 650 mAh 75C LiPo, XT30",
+   "qty": 1,
+   "mass_g_each": 59.0,
+   "source": "Gens Tattu product page (3S1P 75C 11.1V 650 mAh, XT30): 58 (\u00b15) \u00d7 31 (\u00b12) \u00d7 16 (\u00b12) mm, 59 g, 16 AWG discharge lead 45 mm, XT30, balance JST-XHR-4P 45 mm. The fit checks use the upper tolerance.",
+   "notes": ""
+  },
+  {
+   "type": "buy",
+   "role": "fasteners",
+   "item": "M2\u00d76 self-tapping (skin, pods) \u00d712; M2\u00d75 motor screws \u00d716; M3\u00d720 stack standoffs/screws \u00d74; M3 silicone grommets \u00d74",
+   "qty": 1,
+   "mass_g_each": 6.0,
+   "source": "",
+   "notes": ""
+  },
+  {
+   "type": "buy",
+   "role": "usb extension",
+   "item": "USB-C extension, 50\u2013100 mm, right-angle plug to panel-mount socket",
+   "qty": 1,
+   "mass_g_each": 3.0,
+   "source": "nominal: FPV USB-C extension/pigtail boards weigh 2\u20134 g; socket needs a \u22489.5 \u00d7 3.5 mm opening.",
+   "notes": "FC J2 \u2192 socket in the left side of the centre shell (x = 0.0 mm); glue the socket in its opening"
+  },
+  {
+   "type": "buy",
+   "role": "battery strap",
+   "item": "12 mm Velcro strap, 200 mm \u00d72",
+   "qty": 2,
+   "mass_g_each": 1.0,
+   "source": "",
+   "notes": "through the frame strap slots"
+  },
+  {
+   "type": "print",
+   "role": "structure: carries motors, stack, battery",
+   "item": "frame",
+   "qty": 1,
+   "mass_g_each": 29.3,
+   "source": "out/print/frame.stl",
+   "notes": "PETG, as modelled, 154.3\u00d7130.0\u00d710.5 mm"
+  },
+  {
+   "type": "print",
+   "role": "duct (prop guard) + wing/tail",
+   "item": "pod_front_left",
+   "qty": 1,
+   "mass_g_each": 14.9,
+   "source": "out/print/pod_front_left.stl",
+   "notes": "LW-PLA, as modelled, 127.5\u00d791.5\u00d726.0 mm"
+  },
+  {
+   "type": "print",
+   "role": "duct (prop guard) + wing/tail",
+   "item": "pod_front_right",
+   "qty": 1,
+   "mass_g_each": 14.9,
+   "source": "out/print/pod_front_right.stl",
+   "notes": "LW-PLA, as modelled, 127.5\u00d791.5\u00d726.0 mm"
+  },
+  {
+   "type": "print",
+   "role": "duct (prop guard) + wing/tail",
+   "item": "pod_rear_left",
+   "qty": 1,
+   "mass_g_each": 13.7,
+   "source": "out/print/pod_rear_left.stl",
+   "notes": "LW-PLA, as modelled, 103.5\u00d790.7\u00d726.0 mm"
+  },
+  {
+   "type": "print",
+   "role": "duct (prop guard) + wing/tail",
+   "item": "pod_rear_right",
+   "qty": 1,
+   "mass_g_each": 13.7,
+   "source": "out/print/pod_rear_right.stl",
+   "notes": "LW-PLA, as modelled, 103.5\u00d790.7\u00d726.0 mm"
+  },
+  {
+   "type": "print",
+   "role": "skin / electronics cover",
+   "item": "fuselage_nose (+ canopy)",
+   "qty": 1,
+   "mass_g_each": 13.9,
+   "source": "out/print/fuselage_nose.stl",
+   "notes": "LW-PLA, standing on its aft face (-x down), 50.0\u00d748.5\u00d7112.5 mm"
+  },
+  {
+   "type": "print",
+   "role": "skin / electronics cover",
+   "item": "fuselage_centre",
+   "qty": 1,
+   "mass_g_each": 10.3,
+   "source": "out/print/fuselage_centre.stl",
+   "notes": "LW-PLA, standing on its aft face (-x down), 46.7\u00d741.6\u00d7142.0 mm"
+  },
+  {
+   "type": "print",
+   "role": "skin / electronics cover",
+   "item": "fuselage_tail",
+   "qty": 1,
+   "mass_g_each": 4.2,
+   "source": "out/print/fuselage_tail.stl",
+   "notes": "LW-PLA, standing on its forward face (+x down), 46.7\u00d745.1\u00d753.6 mm"
+  },
+  {
+   "type": "print",
+   "role": "cosmetic",
+   "item": "fin_left",
+   "qty": 1,
+   "mass_g_each": 1.0,
+   "source": "out/print/fin_left.stl",
+   "notes": "LW-PLA, lying on its flat side, 50.0\u00d731.5\u00d72.4 mm"
+  },
+  {
+   "type": "print",
+   "role": "cosmetic",
+   "item": "fin_right",
+   "qty": 1,
+   "mass_g_each": 1.0,
+   "source": "out/print/fin_right.stl",
+   "notes": "LW-PLA, lying on its flat side, 50.0\u00d731.5\u00d72.4 mm"
+  }
+ ]
+}

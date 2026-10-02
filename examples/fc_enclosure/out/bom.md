@@ -1,0 +1,6 @@
+| Type | Role | Item | Qty | Mass each (g) | Source | Notes |
+|---|---|---|---|---|---|---|
+| make (RL PCB) | board | main | 1 | 0 | /home/claude/rlcad/examples/fc_enclosure/../f35_ducted_quad/electronics/rl_fc_f405/rl_fc_f405.kicad_pcb | fabricate from the KiCad project |
+| buy | fasteners | M3×6 self-tapping (board) ×4; M3×10 self-tapping (lid) ×4 | 1 | 3.0 |  | pilots Ø2.5 / Ø2.5 mm |
+| print | enclosure base: holds the board | base | 1 | 13.3 | out/print/base.stl | PETG, as modelled |
+| print | enclosure lid | lid | 1 | 6.7 | out/print/lid.stl | PETG, upside down |

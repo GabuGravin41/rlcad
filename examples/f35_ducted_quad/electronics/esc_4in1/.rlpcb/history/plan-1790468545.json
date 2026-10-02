@@ -1,0 +1,15 @@
+{
+  "name": "esc_4in1",
+  "description": "4-in-1 ESC 30.5 mm, 25 A (bought) - interface model",
+  "blocks": [],
+  "components": [],
+  "nets": [],
+  "no_connect": [],
+  "requirements": {
+    "input": "3S LiPo via XT30",
+    "fc_connector": "8-pin JST-SH: VBAT, GND, CURR, TLM, M1, M2, M3, M4 (verify!)"
+  },
+  "decisions": [],
+  "version": 1,
+  "updated": 1790468545.9079888
+}

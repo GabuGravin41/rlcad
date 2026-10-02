@@ -1,0 +1,70 @@
+{
+  "name": "F-35 ducted quad electronics",
+  "boards": {
+    "fc": "rl_fc_f405",
+    "esc": "esc_4in1",
+    "rx": "rx_elrs"
+  },
+  "harnesses": [
+    {
+      "id": "H1",
+      "a": {
+        "board": "fc",
+        "ref": "J3"
+      },
+      "b": {
+        "board": "esc",
+        "ref": "J1"
+      },
+      "mapping": "straight",
+      "pin_current_a": 1.0,
+      "cable": "8-pin JST-SH 1.0 mm, 60-80 mm (ships with ESC)"
+    },
+    {
+      "id": "H2",
+      "a": {
+        "board": "fc",
+        "ref": "J4"
+      },
+      "b": {
+        "board": "rx",
+        "ref": "J1"
+      },
+      "mapping": {
+        "1": "1",
+        "2": "2",
+        "3": "4",
+        "4": "3"
+      },
+      "pin_current_a": 1.0,
+      "cable": "4-pin JST-SH pigtail, soldered to RX pads; TX\u2194RX crossed"
+    }
+  ],
+  "supplies": [
+    {
+      "board": "esc",
+      "net": "VBAT",
+      "capacity_a": 100.0
+    },
+    {
+      "board": "fc",
+      "net": "+5V",
+      "capacity_a": 2.0,
+      "local_load_a": 0.25
+    },
+    {
+      "board": "fc",
+      "net": "+3V3",
+      "capacity_a": 0.6,
+      "local_load_a": 0.2
+    }
+  ],
+  "acknowledged": [
+    {
+      "rule": "pin_current",
+      "where": "H1",
+      "match": "VBAT",
+      "reason": "3 A is the FC's VBAT copper rating; the real draw on this drone is \u22480.18 A at 3S"
+    }
+  ]
+}

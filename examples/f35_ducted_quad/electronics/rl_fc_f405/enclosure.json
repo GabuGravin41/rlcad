@@ -1,0 +1,30 @@
+{
+ "schema": "rl-envelope/1",
+ "product": "f35_ducted_quad",
+ "slot": "fc",
+ "generated_by": "RL CAD",
+ "frame": "board frame of rl-mech/1 (origin outline centre, +y = KiCad top edge)",
+ "rotation_deg": 0,
+ "max_outline_mm": [
+  46.8,
+  43.0
+ ],
+ "mount_pattern_mm": 30.5,
+ "mount_hole_d_mm": 3.0,
+ "keepout_height_mm": {
+  "top": 15.38,
+  "bottom": 3.7
+ },
+ "reachable_edges": [],
+ "required_ports": [
+  {
+   "mate": "usb-c",
+   "why": "flight-controller configuration from outside the airframe",
+   "via_extension": true,
+   "edges": []
+  }
+ ],
+ "notes": [
+  "stack at x = 30.0 mm; board bottom face at z = 15.0 mm in the airframe"
+ ]
+}

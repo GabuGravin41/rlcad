@@ -1,0 +1,85 @@
+{
+  "name": "rx_elrs",
+  "description": "ExpressLRS 2.4 GHz nano receiver (bought) - interface model",
+  "blocks": [],
+  "components": [
+    {
+      "ref": "J1",
+      "lib_id": "Connector_Generic:Conn_01x04",
+      "value": "RX pads 5V/GND/TX/RX",
+      "footprint": "Connector_PinHeader_1.27mm:PinHeader_1x04_P1.27mm_Vertical",
+      "block": "",
+      "role": "solder pads",
+      "fields": {},
+      "notes": "",
+      "unit_count": 1,
+      "dnp": false,
+      "sheet": ""
+    }
+  ],
+  "nets": [
+    {
+      "name": "+5V",
+      "nodes": [
+        "J1.1"
+      ],
+      "net_class": "power",
+      "notes": "ELRS nano: ~50-100 mA",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": 0.1,
+      "voltage_v": 5.0
+    },
+    {
+      "name": "GND",
+      "nodes": [
+        "J1.2"
+      ],
+      "net_class": "ground",
+      "notes": "",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": null
+    },
+    {
+      "name": "RX_TX",
+      "nodes": [
+        "J1.3"
+      ],
+      "net_class": "",
+      "notes": "receiver TX (CRSF out)",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    },
+    {
+      "name": "RX_RX",
+      "nodes": [
+        "J1.4"
+      ],
+      "net_class": "",
+      "notes": "receiver RX (telemetry in)",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    }
+  ],
+  "no_connect": [],
+  "requirements": {
+    "protocol": "CRSF 420 kbaud on FC UART1"
+  },
+  "decisions": [],
+  "version": 1,
+  "updated": 1790497536.8972435
+}

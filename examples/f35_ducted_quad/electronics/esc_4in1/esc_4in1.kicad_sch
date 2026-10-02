@@ -1,0 +1,15 @@
+(kicad_sch
+	(version 20230121)
+	(generator eeschema)
+	(uuid c35bd6c9-1ada-45ca-93e8-7f4d0535be5f)
+	(paper "A4")
+	(title_block
+		(title "4-in-1 ESC 30.5 mm, 25 A (bought) - interface model")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

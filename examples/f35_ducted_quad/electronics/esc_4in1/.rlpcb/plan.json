@@ -1,0 +1,157 @@
+{
+  "name": "esc_4in1",
+  "description": "4-in-1 ESC 30.5 mm, 25 A (bought) - interface model",
+  "blocks": [],
+  "components": [
+    {
+      "ref": "J1",
+      "lib_id": "Connector_Generic:Conn_01x08",
+      "value": "FC 8-pin JST-SH",
+      "footprint": "Connector_JST:JST_SH_SM08B-SRSS-TB_1x08-1MP_P1.00mm_Horizontal",
+      "block": "",
+      "role": "harness to the FC; pin order as printed on the ESC",
+      "fields": {},
+      "notes": "",
+      "unit_count": 1,
+      "dnp": false,
+      "sheet": ""
+    },
+    {
+      "ref": "J2",
+      "lib_id": "Connector_Generic:Conn_01x02",
+      "value": "BAT pads (XT30 pigtail)",
+      "footprint": "Connector_Wire:SolderWire-1.5sqmm_1x02_P6mm_D1.7mm_OD3mm",
+      "block": "",
+      "role": "battery lead",
+      "fields": {},
+      "notes": "",
+      "unit_count": 1,
+      "dnp": false,
+      "sheet": ""
+    }
+  ],
+  "nets": [
+    {
+      "name": "VBAT",
+      "nodes": [
+        "J1.1",
+        "J2.1"
+      ],
+      "net_class": "power",
+      "notes": "battery voltage passed to the FC (FC draws < 1 A)",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": 1.0,
+      "voltage_v": 12.6
+    },
+    {
+      "name": "GND",
+      "nodes": [
+        "J1.2",
+        "J2.2"
+      ],
+      "net_class": "ground",
+      "notes": "",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": null
+    },
+    {
+      "name": "ESC_CURR",
+      "nodes": [
+        "J1.3"
+      ],
+      "net_class": "analog",
+      "notes": "current-sensor output, 0-3.3 V",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    },
+    {
+      "name": "ESC_TLM",
+      "nodes": [
+        "J1.4"
+      ],
+      "net_class": "signal",
+      "notes": "ESC telemetry TX (to an FC UART RX)",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    },
+    {
+      "name": "M1",
+      "nodes": [
+        "J1.5"
+      ],
+      "net_class": "",
+      "notes": "",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    },
+    {
+      "name": "M2",
+      "nodes": [
+        "J1.6"
+      ],
+      "net_class": "",
+      "notes": "",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    },
+    {
+      "name": "M3",
+      "nodes": [
+        "J1.7"
+      ],
+      "net_class": "",
+      "notes": "",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    },
+    {
+      "name": "M4",
+      "nodes": [
+        "J1.8"
+      ],
+      "net_class": "",
+      "notes": "",
+      "width_mm": null,
+      "diff_partner": null,
+      "impedance_ohm": null,
+      "max_length_mm": null,
+      "current_a": null,
+      "voltage_v": 3.3
+    }
+  ],
+  "no_connect": [],
+  "requirements": {
+    "input": "3S LiPo via XT30",
+    "fc_connector": "8-pin JST-SH: VBAT, GND, CURR, TLM, M1, M2, M3, M4 (verify!)"
+  },
+  "decisions": [],
+  "version": 1,
+  "updated": 1790497536.7896805
+}

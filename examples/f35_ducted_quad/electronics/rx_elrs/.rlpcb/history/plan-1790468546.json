@@ -1,0 +1,14 @@
+{
+  "name": "rx_elrs",
+  "description": "ExpressLRS 2.4 GHz nano receiver (bought) - interface model",
+  "blocks": [],
+  "components": [],
+  "nets": [],
+  "no_connect": [],
+  "requirements": {
+    "protocol": "CRSF 420 kbaud on FC UART1"
+  },
+  "decisions": [],
+  "version": 1,
+  "updated": 1790468546.0308402
+}

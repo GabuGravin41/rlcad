@@ -1,0 +1,44 @@
+{
+  "name": "f35_ducted_quad",
+  "kind": "ducted_quad_f35",
+  "requirements": {
+    "airframe": "F-35-style ducted quad, 3\" props",
+    "fc": "RL PCB F405 (30.5 mm)",
+    "battery": "3S 450\u2013650 mAh"
+  },
+  "printer": "bambu_a1_mini",
+  "parts": {
+    "motor": {
+      "id": "motor_xing2_1404_4600kv"
+    },
+    "prop": {
+      "id": "prop_gemfan_3016_3"
+    },
+    "esc": {
+      "id": "esc_racerstar_shot30a"
+    },
+    "fc": {
+      "id": "fc_rl_f405"
+    },
+    "receiver": {
+      "id": "rx_radiomaster_rp1"
+    },
+    "battery": {
+      "id": "lipo_3s_650"
+    }
+  },
+  "airframe": {},
+  "materials": {},
+  "fc_step": "boards/rl_fc_f405.step",
+  "decisions": [
+    "ACK arm_stiffness: first flights on a PETG frame (first mode ~125 Hz, deflection 0.3 mm); switch to PETG-CF (~176 Hz) or 3 mm carbon from frame.dxf (~194 Hz) if the gyro trace is noisy",
+    "ACK power_connector: full-throttle bursts (~32 A estimated) last a few seconds; hover draws ~5 A. XT30 is the usual connector on 3S 450-650 mAh packs; switch to a pack with an XT60 if the plug gets hot"
+  ],
+  "updated": 1790459031.0071464,
+  "boards": {
+    "fc": {
+      "project": "electronics/rl_fc_f405",
+      "rotation": 0
+    }
+  }
+}

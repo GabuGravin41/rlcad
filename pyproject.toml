@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rlcad"
+version = "0.1.0"
+description = "RL CAD: AI-assisted mechanical design — spec → checked, parted, printable CAD (STEP/STL/DXF)"
+requires-python = ">=3.10,<3.14"
+dependencies = ["build123d>=0.9", "numpy", "scipy", "matplotlib", "ezdxf", "requests", "trimesh", "rtree"]
+
+[project.optional-dependencies]
+mcp = ["mcp"]
+fast = ["embreex"]          # Embree ray casting for the print audit (about 30x faster)
+test = ["pytest"]
+
+[project.scripts]
+rlcad = "rlcad.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["rlcad*"]
+
+[tool.setuptools.package-data]
+"rlcad.adapters.freecad" = ["*.FCMacro"]

@@ -1,0 +1,54 @@
+{
+ "schema": "rl-envelope/1",
+ "product": "fc_enclosure",
+ "slot": "main",
+ "generated_by": "RL CAD (enclosure)",
+ "frame": "board frame of rl-mech/1 (origin outline centre, +y = KiCad top edge)",
+ "rotation_deg": 0,
+ "max_outline_mm": [
+  46.5,
+  46.5
+ ],
+ "mount_pattern_mm": null,
+ "mount_hole_d_mm": 2.5,
+ "mount_holes_mm": [
+  [
+   -15.25,
+   -15.25
+  ],
+  [
+   -15.25,
+   15.25
+  ],
+  [
+   15.25,
+   15.25
+  ],
+  [
+   15.25,
+   -15.25
+  ]
+ ],
+ "keepout_height_mm": {
+  "top": 3.51,
+  "bottom": 3.2
+ },
+ "reachable_edges": [
+  "+x",
+  "+y",
+  "-x",
+  "-y"
+ ],
+ "required_ports": [
+  {
+   "mate": "usb-c",
+   "why": "opening in the enclosure wall",
+   "edges": [
+    "+y"
+   ]
+  }
+ ],
+ "notes": [
+  "enclosure inner 47.5\u00d747.5 mm; board bottom 5.5 mm above the base bottom; standoffs follow the board's holes on every rebuild"
+ ]
+}

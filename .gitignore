@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+*.kicad_prl
+.history/
+*-backups/
+fp-info-cache
+*.lck
+*.kicad_prl

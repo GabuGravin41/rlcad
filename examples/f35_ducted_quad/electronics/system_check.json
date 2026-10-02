@@ -1,0 +1,129 @@
+{
+ "system": "F-35 ducted quad electronics",
+ "boards": {
+  "fc": {
+   "project": "/home/claude/rlcad/examples/f35_ducted_quad/electronics/rl_fc_f405/rl_fc_f405.kicad_pro",
+   "source": "plan"
+  },
+  "esc": {
+   "project": "/home/claude/rlcad/examples/f35_ducted_quad/electronics/esc_4in1/esc_4in1.kicad_pro",
+   "source": "plan"
+  },
+  "rx": {
+   "project": "/home/claude/rlcad/examples/f35_ducted_quad/electronics/rx_elrs/rx_elrs.kicad_pro",
+   "source": "plan"
+  }
+ },
+ "summary": {
+  "info": 1
+ },
+ "findings": [
+  {
+   "severity": "info",
+   "rule": "pin_current",
+   "message": "H1 pin 1\u21941 (fc.J3.1 \u2194 esc.J1.1): VBAT carries \u22483.00 A per pin; connector rated 1 A per pin \u2014 use more pins or a bigger connector",
+   "where": "H1",
+   "acknowledged": "3 A is the FC's VBAT copper rating; the real draw on this drone is \u22480.18 A at 3S"
+  }
+ ],
+ "pins": [
+  {
+   "harness": "H1",
+   "a": "fc.J3.1",
+   "a_net": "VBAT",
+   "b": "esc.J1.1",
+   "b_net": "VBAT",
+   "status": "pin_current",
+   "current_a": 3.0
+  },
+  {
+   "harness": "H1",
+   "a": "fc.J3.2",
+   "a_net": "GND",
+   "b": "esc.J1.2",
+   "b_net": "GND",
+   "status": "ok"
+  },
+  {
+   "harness": "H1",
+   "a": "fc.J3.3",
+   "a_net": "ESC_CURR",
+   "b": "esc.J1.3",
+   "b_net": "ESC_CURR",
+   "status": "ok"
+  },
+  {
+   "harness": "H1",
+   "a": "fc.J3.4",
+   "a_net": "ESC_TLM",
+   "b": "esc.J1.4",
+   "b_net": "ESC_TLM",
+   "status": "ok"
+  },
+  {
+   "harness": "H1",
+   "a": "fc.J3.5",
+   "a_net": "MOTOR1",
+   "b": "esc.J1.5",
+   "b_net": "M1",
+   "status": "check names"
+  },
+  {
+   "harness": "H1",
+   "a": "fc.J3.6",
+   "a_net": "MOTOR2",
+   "b": "esc.J1.6",
+   "b_net": "M2",
+   "status": "check names"
+  },
+  {
+   "harness": "H1",
+   "a": "fc.J3.7",
+   "a_net": "MOTOR3",
+   "b": "esc.J1.7",
+   "b_net": "M3",
+   "status": "check names"
+  },
+  {
+   "harness": "H1",
+   "a": "fc.J3.8",
+   "a_net": "MOTOR4",
+   "b": "esc.J1.8",
+   "b_net": "M4",
+   "status": "check names"
+  },
+  {
+   "harness": "H2",
+   "a": "fc.J4.1",
+   "a_net": "+5V",
+   "b": "rx.J1.1",
+   "b_net": "+5V",
+   "status": "ok",
+   "current_a": 0.1
+  },
+  {
+   "harness": "H2",
+   "a": "fc.J4.2",
+   "a_net": "GND",
+   "b": "rx.J1.2",
+   "b_net": "GND",
+   "status": "ok"
+  },
+  {
+   "harness": "H2",
+   "a": "fc.J4.3",
+   "a_net": "UART1_TX",
+   "b": "rx.J1.4",
+   "b_net": "RX_RX",
+   "status": "check names"
+  },
+  {
+   "harness": "H2",
+   "a": "fc.J4.4",
+   "a_net": "UART1_RX",
+   "b": "rx.J1.3",
+   "b_net": "RX_TX",
+   "status": "check names"
+  }
+ ]
+}
